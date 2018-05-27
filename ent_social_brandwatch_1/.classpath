@@ -8,5 +8,6 @@
 	<classpathentry kind="lib" path="C:/Users/Sudip/Downloads/org.apache.commons.httpclient.jar/org.apache.commons.httpclient.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Sudip/Downloads/org.apache.commons.io.jar/org.apache.commons.io.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Sudip/Downloads/com.thoughtworks.xstream.jar/com.thoughtworks.xstream.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sudip/Downloads/log4j-api-2.4.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
