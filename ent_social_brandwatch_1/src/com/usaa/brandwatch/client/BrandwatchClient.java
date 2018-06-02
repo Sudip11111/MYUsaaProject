@@ -12,23 +12,31 @@ import com.google.gson.Gson;
 import com.usaa.brandwatch.client.constants.BrandwatchClientConstant;
 import com.usaa.brandwatch.client.exception.BrandwatchClientException;
 import com.usaa.brandwatch.client.util.BrandwatchClientUtil;
+import com.usaa.brandwatch.client.vo.BWProjectIdVo;
 import com.usaa.brandwatch.client.vo.BrandwatchAuthVo;
 import com.usaa.brandwatch.client.vo.BrandwatchMentionsVo;
 import com.usaa.brandwatch.client.vo.QueryDataVo;
 
 public class BrandwatchClient {
-	private String gatewayUsername=null;
-	private String gatewayPassword=null;;
+	private String gatewayUsername = null;
+	private String gatewayPassword = null;
 	private static final Logger logger = Logger.getLogger(BrandwatchClient.class.getCanonicalName());
-	//private static final String CLASS_NAME = null;
-	private static final String CLASSNAME = null;
-	//just fro commit
+	private static final String CALSS_NAME = "BrandwatchClient";
+	
+	private BWQueryHandler queryHandler=null;
+	private BWProjectHandler projectHandler=null;
+	private BWQueryGroupHandler queryGroupHandler=null;
+	
 
+	// just fro commit
 
 	public BrandwatchClient(String gatewayUsername, String gatewayPassword) {
 		super();
 		this.gatewayUsername = gatewayUsername;
 		this.gatewayPassword = gatewayPassword;
+		this.queryHandler=new BWQueryHandler(gatewayUsername,gatewayPassword);
+		this.projectHandler=new BWProjectHandler(gatewayUsername,gatewayPassword);
+		this.queryGroupHandler=new BWQueryGroupHandler(gatewayUsername,gatewayPassword);
 	}
 
 	/*
@@ -37,7 +45,7 @@ public class BrandwatchClient {
 	 */
 	private String getBrandwatchAPIGatewayHost() throws Exception {
 		UrlConstructorParam param = new UrlConstructorParam().builder
-		.addAppname(BrandwatchClientConstant.BRANDWATCH_API_GATEWAY_HOST).build();
+				.addAppname(BrandwatchClientConstant.BRANDWATCH_API_GATEWAY_HOST).build();
 
 		String url = UrlConstructor.construct(param);
 
@@ -54,7 +62,8 @@ public class BrandwatchClient {
 	/**
 	 * @param bwApiUsername
 	 * @param bwApipassword
-	 * @return BrandwatchAuthVo= object containing the response data from Brandwatch
+	 * @return BrandwatchAuthVo= object containing the response data from
+	 *         Brandwatch
 	 * @throws BrandwatchClientException
 	 */
 	public BrandwatchAuthVo getBrandwatchAuthVoToken(String bwApiUsername, String bwApipassword)
@@ -66,12 +75,9 @@ public class BrandwatchClient {
 		try {
 			requestUrl.append(getBrandwatchAPIGatewayHost())
 			        .append(BrandwatchClientConstant.BRANDWATCH_OATH_PATH)
-					.append(BrandwatchClientConstant.QTN_MARK)
-					.append(BrandwatchClientConstant.BRANDWATCH_USERNAME)
-					.append(bwApiUsername)
-					.append(BrandwatchClientConstant.Ampersand_symbol)
-					.append(BrandwatchClientConstant.BRANDWATCH_PASSWORD)
-					.append(bwApipassword)
+					.append(BrandwatchClientConstant.QTN_MARK).append(BrandwatchClientConstant.BRANDWATCH_USERNAME)
+					.append(bwApiUsername).append(BrandwatchClientConstant.Ampersand_symbol)
+					.append(BrandwatchClientConstant.BRANDWATCH_PASSWORD).append(bwApipassword)
 					.append(BrandwatchClientConstant.Ampersand_symbol)
 					.append(BrandwatchClientConstant.BRANDWATCH_GRANT_TYPE)
 					.append(BrandwatchClientConstant.Ampersand_symbol)
@@ -91,12 +97,14 @@ public class BrandwatchClient {
 			brandwatchauthvo = gson.fromJson(brandwatchResponse, BrandwatchAuthVo.class);
 
 			if (responsecode == BrandwatchClientConstant.Success_code) {
-				logger.logp(Level.FINEST, CLASSNAME, methodName, "Success in getAuthenticationToken()"
+
+				logger.logp(Level.FINEST, CALSS_NAME, methodName, "Success in getAuthenticationToken()"
 						+ " from BrandwaatchClient with Response" + brandwatchResponse);
 			} else {
-				
-
-			}
+				logger.logp(Level.FINEST, CALSS_NAME, methodName, "failure to validProjectId"
+						+ " from BrandwaatchClient with Response");
+				throw new BrandwatchClientException("a");
+			} 
 		} catch (Exception e) {
 
 		}
@@ -113,7 +121,7 @@ public class BrandwatchClient {
 	 * @param BrandwatchMentionsVo=Object that contains data related to particular Brandwatch query
 	 * throws BrandwatchClientException
 	 */
-	
+
 	public BrandwatchMentionsVo getBrandwatchMentions
 	(String authToken,QueryDataVo request,boolean maskcontentflag) throws BrandwatchClientException
 	{
@@ -121,54 +129,98 @@ public class BrandwatchClient {
 		StringBuffer requestUrl=new StringBuffer(200);
 		String response=null;
 		BrandwatchMentionsVo responseObject=new BrandwatchMentionsVo();
-		logger.logp(Level.FINEST,CLASSNAME, methodName,"Hye");
+		logger.logp(Level.FINEST,CALSS_NAME, methodName,"Hye");
 		
-		logger.logp(Level.FINEST, CLASSNAME, methodName, "Calling getBrandwatchMentiion end point for query"
+		logger.logp(Level.FINEST, CALSS_NAME, methodName, "Calling getBrandwatchMentiion end point for query"
 				+request.getQueryName()+ "with since Id:"+request.getSinceId());
-		
-		try{
-			requestUrl.append(getBrandwatchAPIGatewayHost()).append(BrandwatchClientConstant.BRANDWATCH_OATH_PATH)
-			.append(BrandwatchClientConstant.QTN_MARK)
-			.append(BrandwatchClientConstant.BRANDWATCH_USERNAME)
-			.append(bwApiUsername)
-			.append(BrandwatchClientConstant.Ampersand_symbol)
-			.append(BrandwatchClientConstant.BRANDWATCH_PASSWORD)
-			.append(bwApipassword)
-			.append(BrandwatchClientConstant.Ampersand_symbol)
-			.append(BrandwatchClientConstant.BRANDWATCH_GRANT_TYPE)
-			.append(BrandwatchClientConstant.Ampersand_symbol)
-			.append(BrandwatchClientConstant.BRANDWATCH_Client_ID);
+	//insert Here
+		try {
+			requestUrl.append(getBrandwatchAPIGatewayHost())
+			        .append(BrandwatchClientConstant.BRANDWATCH_PROJECT_PATH)
+					.append(BrandwatchClientConstant.Slash_separator)
+					.append(request.getProjectId())
+					.append(BrandwatchClientConstant.BRANDWATCH_MENTIONS_PATH)
+					.append(BrandwatchClientConstant.QTN_MARK)
+					.append(BrandwatchClientConstant.BRANDWATCH_QUERY_ID)
+					.append(request.getQueryId())
+					.append(BrandwatchClientConstant.Ampersand_symbol)
+					.append(BrandwatchClientConstant.BRANDWATCH_access_token)
+					.append(authToken)
+					.append(BrandwatchClientConstant.Ampersand_symbol)
+					.append(BrandwatchClientConstant.BRANDWATCH_START_DATE)
+					.append(request.getStartDate())
+					.append(BrandwatchClientConstant.Ampersand_symbol)
+					.append(BrandwatchClientConstant.BRANDWATCH_END_DATE)
+					.append(request.getEndDate())
+					.append(BrandwatchClientConstant.Ampersand_symbol)
+					.append(BrandwatchClientConstant.BRANDWATCH_ORDER_DIR)
+					.append(request.getOrderDirection())
+					.append(BrandwatchClientConstant.Ampersand_symbol)
+					.append(BrandwatchClientConstant.BRANDWATCH_ORDER_BY)
+					.append(request.getOrderBy())
+					.append(BrandwatchClientConstant.Ampersand_symbol)
+					.append(BrandwatchClientConstant.BRANDWATCH_Since_ID)
+					.append(request.getSinceId())
+					.append(BrandwatchClientConstant.Ampersand_symbol)
+					.append(BrandwatchClientConstant.BRANDWATCH_Page_Type)
+					.append(request.getPageType())
+					.append(BrandwatchClientConstant.Ampersand_symbol)
+					.append(BrandwatchClientConstant.BRANDWATCH_Page_Size)
+					.append(request.getPageSize());
+					
 
-	HttpClient httpclient = new HttpClient();
-	GetMethod bwApiResponse = new GetMethod(requestUrl.toString());
+			HttpClient httpclient = new HttpClient();
+			GetMethod bwApiResponse = new GetMethod(requestUrl.toString());
 
-	bwApiResponse.addRequestHeader("Authorization", "Basic"
-			+ BrandwatchClientUtil.encode(gatewayUsername + BrandwatchClientConstant.Colon + gatewayPassword));
+			bwApiResponse.addRequestHeader("Authorization", "Basic"
+					+ BrandwatchClientUtil.encode(gatewayUsername + BrandwatchClientConstant.Colon + gatewayPassword));
 
-	int responsecode = httpclient.executeMethod(bwApiResponse);
+			int responsecode = httpclient.executeMethod(bwApiResponse);
 
-	InputStream bwresponseStream = bwApiResponse.getResponseBodyAsStream();
+			InputStream bwresponseStream = bwApiResponse.getResponseBodyAsStream();
 
-	String brandwatchResponse = IOUtils.toString(bwresponseStream, BrandwatchClientConstant.UTF_Encoding);
+			String brandwatchResponse = IOUtils.toString(bwresponseStream, BrandwatchClientConstant.UTF_Encoding);
+			
+			
+	
 	 Gson gson=new Gson();
 	 responseObject=gson.fromJson(brandwatchResponse, BrandwatchMentionsVo.class);
 	 if(BrandwatchClientConstant.Success_code==responsecode){
-		 logger.logp(Level.FINEST, CLASS_NAME, methodName,
+		 logger.logp(Level.FINEST, CALSS_NAME, methodName,
 	"Data Returns Successfully retreived from brandwatch mentions API Service\n\n" +response+ "\n\n");
-		 if(maskcontentflag && responseObject.getResults().
+		 if(maskcontentflag && responseObject.getResults().size()>0)
 		 {
-			 responseObject.setResults(BrandwatchClientUtil.maskcontentflag(responseObject.getResults());
-			 logger.logp(Level.FINEST, CLASS_NAME, methodName,
+			 responseObject.setResults(BrandwatchClientUtil.masksenSitiveContent(responseObject)
+			 logger.logp(Level.FINEST, CALSS_NAME, methodName,
 					 "result list size beforetwitter hydrates"+responseObject.getQueryName()+
-					 ""+responseObject.getResults().size();
-		 }			
+					 ""+responseObject.getResults().size());
+		 }
+	 }
+		}catch(Exception e)
+		{
+			
 		}
 		
-		
-		
-	
-	
 	}
+	
+	public BWProjectIdVo  validateProjectId(String id,String authtoken) throws Exception{
+		return this.projectHandler.validateProjectId(id, authtoken, this.getBrandwatchAPIGatewayHost());
+		
+		
+		
+		
+	}
+	
+	
+	
 }
+		
+	
+	
+	
 
-}
+	
+		
+
+
+

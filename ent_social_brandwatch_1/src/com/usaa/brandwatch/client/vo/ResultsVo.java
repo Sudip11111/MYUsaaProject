@@ -1,222 +1,228 @@
 package com.usaa.brandwatch.client.vo;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class ResultsVo {
-	private String accountType;
+	private String accountType="";
 
-	private String assignment;
+	private String assignment="";
 
-	private String author;
+	private String author="";
 
-	private String authorCity;
+	private String authorCity="";
 
-	private String authorCityCode;
+	private String authorCityCode="";
 
-	private String authorContinent;
+	private String authorContinent="";
 
-	private String authorContinentCode;
+	private String authorContinentCode="";
 
-	private String authorCountry;
+	private String authorCountry="";
 
-	private String authorCountryCode;
+	private String authorCountryCode="";
 
-	private String authorCounty;
+	private String authorCounty="";
 
-	private String authorCountyCode;
+	private String authorCountyCode="";
 
-	private String authorLocation;
+	private String authorLocation="";
 
-	private String authorState;
+	private String authorState="";
 
-	private String authorStateCode;
+	private String authorStateCode="";
 
-	private String avatarUrl;
+	private String avatarUrl="";
 
-	private String averageDurationOfVisit;
+	private String averageDurationOfVisit="";
 
-	private String averageVisits;
+	private String averageVisits="";
 
-	private String backlinks;
+	private String backlinks="";
 
-	private String blogComments;
-	private String categories;
+	private String blogComments="";
+	private List<String> categories=new ArrayList<String>();
+	
 
-	private String categoryDetails;
+	private List<CategoryDetailsVo> categoryDetails=new ArrayList<CategoryDetailsVo>();
+	
 
-	private String checked;
+	private String checked="";
 
-	private String city;
+	private String city="";
 
-	private String cityCode;
+	private String cityCode="";
 
-	private String continent;
+	private String continent="";
 
-	private String continentCode;
+	private String continentCode="";
 
-	private String country;
+	private String country="";
 
-	private String countryCode;
+	private String countryCode="";
 
-	private String county;
+	private String county="";
 
-	private String countyCode;
+	private String countyCode="";
 
-	private String date;
+	private String date="";
 
-	private String displayUrls;
+	private List<String> displayUrls=new ArrayList<String>();
 
-	private String domain;
+	private String domain="";
 
-	private String engagement;
+	private String engagement="";
 
-	private String expandedUrls;
+	private List<String> expandedUrls=new ArrayList<String>();
 
-	private String facebookAuthorId;
+	private String facebookAuthorId="";
 
-	private String facebookComments;
+	private String facebookComments="";
 
-	private String facebookLikes;
+	private String facebookLikes="";
 
-	private String facebookRole;
+	private String facebookRole="";
 
-	private String facebookShares;
+	private String facebookShares="";
 
-	private String facebookSubtype;
+	private String facebookSubtype="";
 
-	private String forumPosts;
+	private String forumPosts="";
 
-	private String forumViews;
+	private String forumViews="";
 
-	private String fullname;
+	private String fullname="";
 
-	private String gender;
+	private String gender="";
 
-	private String id;
+	private String id="";
 
-	private String impact;
+	private String impact="";
 
-	private String importanceAmplification;
+	private String importanceAmplification="";
 
-	private String importanceReach;
+	private String importanceReach="";
 
-	private String impressions;
+	private String impressions="";
 
-	private String influence;
+	private String influence="";
 
-	private String insightsHashtag;
+	private List<String> insightsHashtag=new ArrayList<String>();
 
-	private String insightsMentioned;
+	private List<String> insightsMentioned=new ArrayList<String>();
 
-	private String instagramCommentCount;
+	private String instagramCommentCount="";
 
-	private String instagramFollowerCount;
+	private String instagramFollowerCount="";
 
-	private String instagramFollowingCount;
+	private String instagramFollowingCount="";
 
-	private String instagramLikeCount;
+	private String instagramLikeCount="";
 
-	private String instagramPostCount;
+	private String instagramPostCount="";
 
-	private String interest;
+	private List<String> interest=new ArrayList<String>();
 
-	private String language;
+	private String language="";
 
-	private String lastAssignmentDate;
+	private String lastAssignmentDate="";
 
-	private String latitude;
+	private String latitude="";
 
-	private String locationName;
-	private String longitude;
+	private String locationName="";
+	private String longitude="";
 
-	private String matchPositions;
+	private List<MatchPositionVo> matchPositions=new ArrayList<MatchPositionVo>();
 
-	private String mediaUrls;
+	private List<String> mediaUrls=new ArrayList<String>();
 
-	private String monthlyVisitors;
+	private String monthlyVisitors="";
 
-	private String mozRank;
+	private String mozRank="";
 
-	private String noteIds;
+	private String noteIds="";
 
-	private String outreach;
+	private String outreach="";
 
-	private String pageType;
+	private String pageType="";
 
-	private String pagesPerVisit;
+	private String pagesPerVisit="";
 
-	private String percentFemaleVisitors;
+	private String percentFemaleVisitors="";
 
-	private String percentMaleVisitors;
+	private String percentMaleVisitors="";
 
-	private String priority;
+	private String priority="";
 
-	private String professions;
+	private List<Profession> profession=new ArrayList<Profession>();
 
-	private String queryId;
+	private String queryId="";
 
-	private String queryName;
+	private String queryName="";
 
-	private String reach;
+	private String reach="";
 
-	private String replyTo;
+	private String replyTo="";
 
-	private String resourceId;
+	private String resourceId="";
 
-	private String resourceType;
+	private String resourceType="";
 
-	private String retweetOf;
+	private String retweetOf="";
 
-	private String sentiment;
+	private String sentiment="";
 
-	private String shortUrls;
-	private String snippet;
+	private String shortUrls="";
+	private String snippet="";
 
-	private String starred;
+	private String starred="";
 
-	private String state;
+	private String state="";
 
-	private String stateCode;
+	private String stateCode="";
 
-	private String status;
+	private String status="";
 
-	private String subtype;
+	private String subtype="";
 
-	private String tags;
+	private String tags="";
 
-	private String threadAuthor;
+	private String threadAuthor="";
 
-	private String threadCreated;
+	private String threadCreated="";
 
-	private String threadEntryType;
+	private String threadEntryType="";
 
-	private String threadId;
+	private String threadId="";
 
-	private String threadURL;
+	private String threadURL="";
 
-	private String title;
+	private String title="";
 
-	private String trackedLinkClicks;
+	private String trackedLinkClicks="";
 
-	private String trackedLinks;
+	private String trackedLinks="";
 
-	private String twitterAuthorId;
+	private String twitterAuthorId="";
 
-	private String twitterFollowers;
+	private String twitterFollowers="";
 
-	private String twitterFollowing;
+	private String twitterFollowing="";
 
-	private String twitterPostCount;
+	private String twitterPostCount="";
 
-	private String twitterReplyCount;
+	private String twitterReplyCount="";
 
-	private String twitterRetweets;
+	private String twitterRetweets="";
 
-	private String twitterRole;
+	private String twitterRole="";
 
-	private String twitterVerified;
+	private String twitterVerified="";
 
-	private String url;
+	private String url="";
 
-	private String wordCount;
+	private String wordCount="";
 
 	public String getAccountType() {
 		return accountType;
@@ -371,24 +377,22 @@ public class ResultsVo {
 	}
 
 	public String getCategories() {
-		
 		String result="[]";
-		if(null!=categories)
-		{
+		if(null!=categories){
 			result=categories.toString();
 		}
-		return categories;
+		return result;
 	}
 
-	public void setCategories(String categories) {
+	public void setCategories(List<String> categories) {
 		this.categories = categories;
 	}
 
-	public String getCategoryDetails() {
-		return this.categoryDetails=categoryDetails;
+	public List<CategoryDetailsVo> getCategoryDetails() {
+		return categoryDetails;
 	}
 
-	public void setCategoryDetails(String categoryDetails) {
+	public void setCategoryDetails(List<CategoryDetailsVo> categoryDetails) {
 		this.categoryDetails = categoryDetails;
 	}
 
@@ -472,11 +476,11 @@ public class ResultsVo {
 		this.date = date;
 	}
 
-	public String getDisplayUrls() {
+	public List<String> getDisplayUrls() {
 		return displayUrls;
 	}
 
-	public void setDisplayUrls(String displayUrls) {
+	public void setDisplayUrls(List<String> displayUrls) {
 		this.displayUrls = displayUrls;
 	}
 
@@ -496,11 +500,11 @@ public class ResultsVo {
 		this.engagement = engagement;
 	}
 
-	public String getExpandedUrls() {
+	public List<String> getExpandedUrls() {
 		return expandedUrls;
 	}
 
-	public void setExpandedUrls(String expandedUrls) {
+	public void setExpandedUrls(List<String> expandedUrls) {
 		this.expandedUrls = expandedUrls;
 	}
 
@@ -632,19 +636,19 @@ public class ResultsVo {
 		this.influence = influence;
 	}
 
-	public String getInsightsHashtag() {
+	public List<String> getInsightsHashtag() {
 		return insightsHashtag;
 	}
 
-	public void setInsightsHashtag(String insightsHashtag) {
+	public void setInsightsHashtag(List<String> insightsHashtag) {
 		this.insightsHashtag = insightsHashtag;
 	}
 
-	public String getInsightsMentioned() {
+	public List<String> getInsightsMentioned() {
 		return insightsMentioned;
 	}
 
-	public void setInsightsMentioned(String insightsMentioned) {
+	public void setInsightsMentioned(List<String> insightsMentioned) {
 		this.insightsMentioned = insightsMentioned;
 	}
 
@@ -688,11 +692,11 @@ public class ResultsVo {
 		this.instagramPostCount = instagramPostCount;
 	}
 
-	public String getInterest() {
+	public List<String> getInterest() {
 		return interest;
 	}
 
-	public void setInterest(String interest) {
+	public void setInterest(List<String> interest) {
 		this.interest = interest;
 	}
 
@@ -736,19 +740,19 @@ public class ResultsVo {
 		this.longitude = longitude;
 	}
 
-	public String getMatchPositions() {
+	public List<MatchPositionVo> getMatchPositions() {
 		return matchPositions;
 	}
 
-	public void setMatchPositions(String matchPositions) {
+	public void setMatchPositions(List<MatchPositionVo> matchPositions) {
 		this.matchPositions = matchPositions;
 	}
 
-	public String getMediaUrls() {
+	public List<String> getMediaUrls() {
 		return mediaUrls;
 	}
 
-	public void setMediaUrls(String mediaUrls) {
+	public void setMediaUrls(List<String> mediaUrls) {
 		this.mediaUrls = mediaUrls;
 	}
 
@@ -824,12 +828,12 @@ public class ResultsVo {
 		this.priority = priority;
 	}
 
-	public String getProfessions() {
-		return professions;
+	public List<Profession> getProfession() {
+		return profession;
 	}
 
-	public void setProfessions(String professions) {
-		this.professions = professions;
+	public void setProfession(List<Profession> profession) {
+		this.profession = profession;
 	}
 
 	public String getQueryId() {
@@ -1104,4 +1108,5 @@ public class ResultsVo {
 		this.wordCount = wordCount;
 	}
 
+	
 }

@@ -9,5 +9,6 @@
 	<classpathentry kind="lib" path="C:/Users/Sudip/Downloads/org.apache.commons.io.jar/org.apache.commons.io.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Sudip/Downloads/com.thoughtworks.xstream.jar/com.thoughtworks.xstream.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Sudip/Downloads/log4j-api-2.4.1.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ent_social_adhoc_Pbl"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,6 +1,6 @@
 package com.usaa.brandwatch.client.vo;
 
-public class MatchPosition {
+public class MatchPositionVo {
 	
 	private String start;
 	private String text;

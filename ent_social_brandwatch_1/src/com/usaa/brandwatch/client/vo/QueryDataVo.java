@@ -23,7 +23,7 @@ public class QueryDataVo {
 	private String softDelete;
 	private String resultsTotal;
 	private String environment;
-	private String Clu;
+	private String subQuery;
 	public String getQueryId() {
 		return queryId;
 	}
@@ -156,11 +156,11 @@ public class QueryDataVo {
 	public void setEnvironment(String environment) {
 		this.environment = environment;
 	}
-	public String getClu() {
-		return Clu;
+	public String getSubQuery() {
+		return subQuery;
 	}
-	public void setClu(String clu) {
-		Clu = clu;
+	public void setSubQuery(String subQuery) {
+		this.subQuery = subQuery;
 	}
 	
 	
